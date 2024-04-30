@@ -125,7 +125,8 @@ const signinPatient = (email) => {
 // get all patients
 const getAllPatients = () => {
   return new Promise((resolve, reject) => {
-    const query = "SELECT * FROM patient";
+    const query =
+      "SELECT p.* , n.note FROM patient AS p JOIN note as n ON p.patient_id = n.patient_id";
     db.query(query, (err, result) => {
       if (err) {
         reject(err);
